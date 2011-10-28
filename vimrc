@@ -13,14 +13,17 @@ set wrap
 " Turn syntax highlighting on
 if (has("gui_running"))
   syntax on
+  if has("gui_macvim")
+    set guifont=Menlo:h16
+  endif
 end
 
 " Set the leader key
 let mapleader = ","
 
 " Swap file directory - stop swp polluting the working directory
-set backupdir=~/.vim/tmp
-set directory=~/.vim/tmp
+set backupdir=$HOME/.vim/tmp
+set directory=$HOME/.vim/tmp
 
 " Split switching - sets the currently focussed split to be larger than the rest
 set winwidth=84
@@ -83,6 +86,17 @@ set smartcase
 " Status bar
 set laststatus=2
 set cmdheight=2
+
+" Tab completion
+set wildmenu
+set wildmode=list:longest
+
+" Folding settings
+set foldmethod=indent
+set foldnestmax=3
+
+" Space to toggle folds
+nnoremap <space> za
 
 " Use Ack instead of Grep when available
 if executable("ack")

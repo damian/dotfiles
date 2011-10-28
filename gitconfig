@@ -15,6 +15,7 @@
     untracked = cyan
 [core]
   excludesfile = /home/damian/.gitignore
+  editor = vim
 [alias]
   s = status
   br = branch
