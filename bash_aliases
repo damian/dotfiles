@@ -10,6 +10,7 @@ function take() { mkdir $1; cd $1; }
 alias tk="take"
 
 # bashrc & vimrc
+alias pr="vim ~/.bash_aliases"
 alias rl="source ~/.bash_aliases"
 
 # Git
@@ -17,6 +18,8 @@ alias g="git"
 
 # Bundler
 alias b="bundle"
+alias be="bundle exec"
+alias run="bundle exec rails s"
 
 # Rails
 alias ss='script/server'
@@ -26,12 +29,34 @@ alias migrate='rake db:migrate'
 alias tlf='tail -f'
 
 # Bash prompt
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+CYAN='\033[0;36m'
+PURPLE="\033[0;35m"
+RED='\033[0;31m'
+YELLOW="\033[0;33m"
+BLUE="\033[0;34m"
+GREEN='\033[0;32m'
+NO_COLOUR="\033[m"
+
+function parse_git_dirty {
+  local STATUS=`git status 2>&1`
+  if [[ "$STATUS" == *'Not a git repository'* ]]
+    then
+      echo ""
+  else
+    if [[ "$STATUS" == *'working directory clean'* ]]
+    then
+      echo -e "$GREEN✔"
+    else
+      echo -e "$RED✗"
+    fi
+  fi
 }
 
-# Edit bash_aliases
-alias pr="vim ~/.bash_aliases"
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1)/"
+}
+
+PS1="$YELLOW↪$NO_COLOUR \W$CYAN\$(parse_git_branch)\$(parse_git_dirty) $NO_COLOUR"
 
 # Edit vimconfig
 alias vr="vim ~/.vimrc"
@@ -43,8 +68,11 @@ alias dgrep="grep -lir --exclude=\*.svn\* --exclude=\*.swp --exclude=\*.log"
 alias dfind="find . -name"
 
 # Open folder
-alias o="nautilus"
+alias o="gnome-open"
 
 # Copy to clipboard
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+# Update and upgrade Ubuntu with latest packages
+alias update='sudo apt-get update && sudo apt-get -y upgrade'

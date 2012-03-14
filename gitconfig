@@ -17,8 +17,8 @@
   excludesfile = /home/damian/.gitignore
 [alias]
   s = status
-  br = branch
-  ci = commit
+  b = branch
+  c = commit
 
   # git cob feature_x
   cob = checkout -b
@@ -38,6 +38,9 @@
   # aa = add . && git status
   aa= !git add -u && git add . && git status
 
+  # Graph
+  hist = log --graph --oneline --all
+
   # Pull in upstream changes from master when in a branch and rebase it
   up = !git fetch origin && git rebase origin/master
 
@@ -52,3 +55,6 @@
 
   pushed = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git log origin/$PROJ_BRANCH..HEAD"
   unpulled = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git fetch && git log HEAD..origin/$PROJ_BRANCH"
+[user]
+  name = Damian Nicholson
+  email = damian.nicholson21@gmail.com
