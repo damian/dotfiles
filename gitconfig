@@ -58,3 +58,5 @@
 [user]
   name = Damian Nicholson
   email = damian.nicholson21@gmail.com
+[push]
+	default = current

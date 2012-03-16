@@ -56,7 +56,7 @@ function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1)/"
 }
 
-PS1="$YELLOW↪$NO_COLOUR \W$CYAN\$(parse_git_branch)\$(parse_git_dirty) $NO_COLOUR"
+PS1="$YELLOW↪$NO_COLOUR \w$CYAN\$(parse_git_branch)\$(parse_git_dirty) $NO_COLOUR"
 
 # Edit vimconfig
 alias vr="vim ~/.vimrc"
