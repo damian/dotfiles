@@ -8,6 +8,10 @@ set nocompatible
 " Show the cursor all the time
 set ruler
 
+" Enhance scrolling
+set ttyfast
+
+" Line wrap
 set wrap
 
 " Turn syntax highlighting on
@@ -18,20 +22,20 @@ if (has("gui_running"))
   endif
 end
 
+"NERD TREE
+autocmd vimenter * NERDTree
+autocmd vimenter * if !argc() |  NERDTree | endif
+let NERDTreeShowHidden=1
+
 " Set the leader key
 let mapleader = ","
+
+" Set jj as Esc alternative
+inoremap jj <Esc>
 
 " Swap file directory - stop swp polluting the working directory
 set backupdir=$HOME/.vim/tmp
 set directory=$HOME/.vim/tmp
-
-" Split switching - sets the currently focussed split to be larger than the rest
-set winwidth=84
-" We have to have a winheight bigger than we want to set winminheight. But if
-" we set winheight to be huge before winminheight, the winminheight set will fail.
-set winheight=5
-set winminheight=5
-set winheight=999
 
 " Rails specific
 map <leader>gr :topleft :split config/routes.rb<cr>
@@ -40,7 +44,6 @@ map <leader>gg :topleft 100 :split Gemfile<cr
 " Indent
 set cindent
 set smartindent
-" set softtabstop=2
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -57,13 +60,11 @@ set number
 set numberwidth=5
 
 " Color scheme
-let g:solarized_termcolors=256
-set t_Co=256
-set background=light
-colorscheme solarized
+colorscheme molokai
 
 " Automatically enable spellcheck for text files
 autocmd FileType textile,txt,rtf setlocal spell
+au BufNewFile,BufRead *.ui set filetype=ruby
 
 " Toggle spell checking on
 nmap <silent> <leader>s :set spell!<CR>
@@ -91,14 +92,16 @@ set cmdheight=2
 set wildmenu
 set wildmode=list:longest
 
-" Folding settings
-set foldmethod=indent
-set foldnestmax=3
-
-" Space to toggle folds
-nnoremap <space> za
-
 " Use Ack instead of Grep when available
 if executable("ack")
   set grepprg=ack\ -H\ --nogroup\ --nocolor
 endif
+
+" Ctrl + n to remove all trailing whitespace
+nnoremap <silent> <C-n> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" Ctrl + hjkl for easy split navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l

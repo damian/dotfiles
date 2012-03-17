@@ -2,3 +2,6 @@
 *.swo
 *.pid
 .DS_Store
+*.rbenv-version
+start_server.sh
+stop_server.sh
