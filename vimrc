@@ -1,6 +1,4 @@
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
 
 " Use Vim settings
 set nocompatible
@@ -56,8 +54,16 @@ set cursorline
 set number
 set numberwidth=5
 
+" Mouse
+set mouse=a
+
 " Color scheme
-colorscheme molokai
+set t_Co=256
+set background=dark
+colorscheme badwolf
+
+" Font
+set guifont=ttf-inconsolata:h14:b
 
 " Automatically enable spellcheck for text files
 autocmd FileType textile,txt,rtf setlocal spell

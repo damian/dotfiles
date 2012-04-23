@@ -29,13 +29,13 @@ alias migrate='rake db:migrate'
 alias tlf='tail -f'
 
 # Bash prompt
-CYAN='\033[0;36m'
-PURPLE="\033[0;35m"
-RED='\033[0;31m'
-YELLOW="\033[0;33m"
-BLUE="\033[0;34m"
-GREEN='\033[0;32m'
-NO_COLOUR="\033[m"
+CYAN="\[\033[0;36m\]"
+PURPLE="\[\033[0;35m\]"
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[0;33m\]"
+BLUE="\[\033[0;34m\]"
+GREEN="\[\033[0;32m\]"
+WHITE="\[\033[1;37m\]"
 
 function parse_git_dirty {
   local STATUS=`git status 2>&1`
@@ -56,7 +56,8 @@ function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1)/"
 }
 
-PS1="$YELLOW↪$NO_COLOUR \w$CYAN\$(parse_git_branch)\$(parse_git_dirty) $NO_COLOUR"
+# PS1="$YELLOW↪ \w$CYAN\$(parse_git_branch)\$(parse_git_dirty) "
+PS1="$YELLOW↪ \w \$(parse_git_branch)$WHITE "
 
 # Edit vimconfig
 alias vr="vim ~/.vimrc"
