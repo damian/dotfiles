@@ -13,9 +13,7 @@ set ttyfast
 set wrap
 
 " Turn syntax highlighting on
-if (has("gui_running"))
-  syntax on
-end
+syntax on
 
 "NERD TREE
 autocmd vimenter * NERDTree

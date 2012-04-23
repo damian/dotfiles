@@ -1,5 +1,15 @@
-# Clear console
+export CLICOLOR=1
+export LSCOLORS=dxfxcxdxbxegedabagacad
+
+# List files with colour
+alias ls="ls -Gp"
+alias ll="ls -alGp"
+
+# Jump to common directories
 alias dev="cd ~/development"
+alias website="cd ~/development/sage-one/sage-one-website"
+alias sageone="cd ~/development/sage-one/sage-one"
+alias sop="cd ~/development/platform/sop"
 
 # navigation
 alias ..="cd .."
@@ -21,11 +31,7 @@ alias b="bundle"
 alias be="bundle exec"
 alias run="bundle exec rails s"
 
-# Rails
-alias ss='script/server'
-alias sc='script/console'
-alias rr='rake routes'
-alias migrate='rake db:migrate'
+# Log
 alias tlf='tail -f'
 
 # Bash prompt
@@ -57,7 +63,7 @@ function parse_git_branch {
 }
 
 # PS1="$YELLOW↪ \w$CYAN\$(parse_git_branch)\$(parse_git_dirty) "
-PS1="$YELLOW↪ \w \$(parse_git_branch)$WHITE "
+PS1="\w \$(parse_git_branch) "
 
 # Edit vimconfig
 alias vr="vim ~/.vimrc"
@@ -67,13 +73,3 @@ alias dgrep="grep -lir --exclude=\*.svn\* --exclude=\*.swp --exclude=\*.log"
 
 # Find all files below the current directory whose name contains
 alias dfind="find . -name"
-
-# Open folder
-alias o="gnome-open"
-
-# Copy to clipboard
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
-
-# Update and upgrade Ubuntu with latest packages
-alias update='sudo apt-get update && sudo apt-get -y upgrade'
