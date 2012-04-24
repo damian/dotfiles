@@ -1,7 +1,7 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/damian/development/my_days_off/app/helpers'
-let g:netrw_dirhist_2='/Users/damian/Dropbox/Public'
-let g:netrw_dirhist_3='/Users/damian/Dropbox/Public/css3-reveal'
-let g:netrw_dirhist_4='/Users/damian/development/my_days_off'
-let g:netrw_dirhist_5='/Users/damian/development/html5_validator'
+let g:netrw_dirhist_1='/home/damian/development/sage-one/sage_one'
+let g:netrw_dirhist_2='/home/damian/development/sop'
+let g:netrw_dirhist_3='/home/damian/.vim'
+let g:netrw_dirhist_4='/home/damian/development/sage-one/sage_one_website'
+let g:netrw_dirhist_5='/home/damian/development/sop/project_fuji'

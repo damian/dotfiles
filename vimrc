@@ -1,6 +1,4 @@
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
 
 " Use Vim settings
 set nocompatible
@@ -15,12 +13,7 @@ set ttyfast
 set wrap
 
 " Turn syntax highlighting on
-if (has("gui_running"))
-  syntax on
-  if has("gui_macvim")
-    set guifont=Menlo:h16
-  endif
-end
+syntax on
 
 "NERD TREE
 autocmd vimenter * NERDTree
@@ -59,8 +52,13 @@ set cursorline
 set number
 set numberwidth=5
 
+" Mouse
+set mouse=a
+
 " Color scheme
-colorscheme molokai
+set t_Co=256
+set background=dark
+colorscheme badwolf
 
 " Automatically enable spellcheck for text files
 autocmd FileType textile,txt,rtf setlocal spell
