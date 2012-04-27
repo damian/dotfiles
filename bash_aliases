@@ -10,6 +10,7 @@ fi
 # Colours in dark terminal
 export CLICOLOR=1
 export LSCOLORS=dxfxcxdxbxegedabagacad
+export GREP_OPTIONS='--color=always'
 
 # List files with trailing forward slashes for directories
 alias ll="ls -alp"
@@ -25,12 +26,15 @@ alias usop="cd ~/development/sop/ui_team_sop"
 alias ..="cd .."
 alias ...="cd ../.."
 
-# mkdir and cd into it
+# Make a directory and move into it
 function take() { mkdir $1; cd $1; }
 
-# bashrc & vimrc
-alias pr="vim ~/.bash_aliases"
-alias rl="source ~/.bash_aliases"
+# Reload aliases
+alias reload="source ~/.bash_aliases"
+
+# Edit configs
+alias vimconfig="vim ~/.vimrc"
+alias bashconfig="vim ~/.bash_aliases"
 
 # Git
 alias g="git"
@@ -74,11 +78,15 @@ function parse_git_branch {
 # PS1="$YELLOW↪ \w$CYAN\$(parse_git_branch)\$(parse_git_dirty) "
 PS1="\w \$(parse_git_branch) "
 
-# Edit vimconfig
-alias vr="vim ~/.vimrc"
-
 # Custom grep
 alias dgrep="grep -lir --exclude=\*.svn\* --exclude=\*.swp --exclude=\*.log"
 
-# Find all files below the current directory whose name contains
-alias dfind="find . -name"
+# Find all files below the current directory containing a particular extension
+function ff() {
+  if [ -z "$1" ]
+  then
+    echo "You must provide a file type"
+  else
+    find . -name "*.$1"
+  fi
+}
