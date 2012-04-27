@@ -1,7 +1,10 @@
+" Ward off unexpected distro defaults
+set nocompatible
+
 filetype off
 
-" Use Vim settings
-set nocompatible
+" Set the leader key
+let mapleader = ","
 
 " Show the cursor all the time
 set ruler
@@ -15,13 +18,10 @@ set wrap
 " Turn syntax highlighting on
 syntax on
 
-"NERD TREE
+" NERDTree
 autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() |  NERDTree | endif
 let NERDTreeShowHidden=1
-
-" Set the leader key
-let mapleader = ","
 
 " Set jj as Esc alternative
 inoremap jj <Esc>
@@ -29,10 +29,6 @@ inoremap jj <Esc>
 " Swap file directory - stop swp polluting the working directory
 set backupdir=~/.vim/tmp
 set directory=~/.vim/tmp
-
-" Rails specific
-map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr
 
 " Indent
 set cindent
@@ -89,11 +85,6 @@ set smartcase
 set laststatus=2
 set cmdheight=2
 
-" Use Ack instead of Grep when available
-if executable("ack")
-  set grepprg=ack\ -H\ --nogroup\ --nocolor
-endif
-
 " Ctrl + n to remove all trailing whitespace
 nnoremap <silent> <C-n> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
@@ -102,3 +93,13 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+
+" Sudo write (,W)
+noremap <leader>W :w !sudo tee %<CR>
+
+" Paste toggle (,p)
+set pastetoggle=<leader>p
+map <leader>p :set invpaste paste?<CR>
+
+" Toggle NERDTree with ,n
+map <leader>n :NERDTreeToggle<cr>
