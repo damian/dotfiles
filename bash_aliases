@@ -47,36 +47,17 @@ alias run="bundle exec rails s"
 # Log
 alias tlf='tail -f'
 
-# Bash prompt
+# Bash colours
 CYAN="\[\033[0;36m\]"
 PURPLE="\[\033[0;35m\]"
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 BLUE="\[\033[0;34m\]"
 GREEN="\[\033[0;32m\]"
-WHITE="\[\033[1;37m\]"
+WHITE="\[\033[0;37m\]"
 
-function parse_git_dirty {
-  local STATUS=`git status 2>&1`
-  if [[ "$STATUS" == *'Not a git repository'* ]]
-    then
-      echo ""
-  else
-    if [[ "$STATUS" == *'working directory clean'* ]]
-    then
-      echo -e "$GREEN✔"
-    else
-      echo -e "$RED✗"
-    fi
-  fi
-}
-
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1)/"
-}
-
-# PS1="$YELLOW↪ \w$CYAN\$(parse_git_branch)\$(parse_git_dirty) "
-PS1="\w \$(parse_git_branch) "
+# Custom prompt
+export PS1="$CYAN\w $PURPLE\$(__git_ps1 \"(%s)\")$WHITE § "
 
 # Custom grep
 alias dgrep="grep -lir --exclude=\*.svn\* --exclude=\*.swp --exclude=\*.log"
