@@ -15,10 +15,13 @@
     untracked = cyan
 [core]
   excludesfile = /home/damian/.gitignore
+  editor = vim
 [alias]
-  s = status
+  s = status -s
   b = branch
   c = commit
+  l = log
+  lo = log --oneline
 
   # git cob feature_x
   cob = checkout -b
@@ -26,37 +29,14 @@
   # commit with a message
   cm = commit -m
   cma = commit -a -m
-
-  # Interactive mode to make complex commits
-  ai = add --interactive
-
-  # Put whatever I’ve done into the previous commit.
-  caa = commit -a --amend -C HEAD
-
-  # shortcuts for commands
-  a = add
-  # aa = add . && git status
-  aa= !git add -u && git add . && git status
-
-  # Graph
-  hist = log --graph --oneline --all
-
-  # Pull in upstream changes from master when in a branch and rebase it
-  up = !git fetch origin && git rebase origin/master
-
-  # Clean up history by squashing commits
-  ir = !git rebase -i origin/master
-
-  # Find out who has committed to a project
-  who = shortlog -n -s --no-merges
-
-  # Graphs changes in past 24hrs
-  today = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
-
-  pushed = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git log origin/$PROJ_BRANCH..HEAD"
-  unpulled = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git fetch && git log HEAD..origin/$PROJ_BRANCH"
 [user]
   name = Damian Nicholson
   email = damian.nicholson21@gmail.com
 [push]
-	default = current
+  default = current
+[difftool "Kaleidoscope"]
+  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+  prompt = false
+[diff]
+  tool = Kaleidoscope

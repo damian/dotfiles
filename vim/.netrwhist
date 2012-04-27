@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/damian/development/sage-one/sage_one'
-let g:netrw_dirhist_2='/home/damian/development/sop'
-let g:netrw_dirhist_3='/home/damian/.vim'
-let g:netrw_dirhist_4='/home/damian/development/sage-one/sage_one_website'
-let g:netrw_dirhist_5='/home/damian/development/sop/project_fuji'
