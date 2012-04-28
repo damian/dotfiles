@@ -23,7 +23,6 @@ alias usop="cd ~/development/sop/ui_team_sop"
 alias ll="ls -alp"
 alias ..="cd .."
 alias ...="cd ../.."
-alias dev="cd ~/development"
 
 # Make a directory and move into it
 function take() { mkdir $1; cd $1; }
