@@ -1,0 +1,36 @@
+{
+    // Settings
+    "passfail"      : false,  // Show me all the errors.
+    "maxerr"        : 100,    // Maximum errors before stopping.
+
+    // Predefined globals whom JSHint will ignore.
+    "browser"       : true,   // Standard browser globals e.g. `window`, `document`.
+    "jquery"        : true,   // We gots jQuery.
+    "predef"        : [  ],   // Global variables available.
+
+    // Development.
+    "debug"         : false,  // Allow debugger statements e.g. browser breakpoints.
+    "devel"         : false,  // Allow development statements e.g. `console.log();`.
+
+    // EcmaScript 5.
+    "es5"           : true,   // Allow EcmaScript 5 syntax.
+    "strict"        : true,   // Require `use strict` pragma in every file.
+
+    // The Good Parts.
+    "asi"           : false,  // Tolerate Automatic Semicolon Insertion (no semicolons).
+    "bitwise"       : true,   // Prohibit bitwise operators (&, |, ^, etc.).
+    "curly"         : false,   // Require {} for every new block or scope.
+    "eqeqeq"        : true,   // Require triple equals i.e. `===`.
+    "evil"          : false,  // Tolerate use of `eval`.
+    "forin"         : true,   // Tolerate `for in` loops without `hasOwnPrototype`.
+    "latedef"       : true,   // Prohibit variable use before definition.
+    "noarg"         : true,   // Prohibit use of `arguments.caller` and `arguments.callee`.
+    "undef"         : true,   // Require all non-global variables be declared before they are used.
+
+    // Personal styling prefrences.
+    "newcap"        : true,   // Require capitalization of all constructor functions e.g. `new F()`.
+    "trailing"      : true,   // Prohibit trailing whitespaces.
+    "laxcomma"      : true,   // Ensure commas are on the next line to where a variable is declared.
+    "multistr"      : true,   // Tolerate multiline strings.
+    "noempty"       : true   // Ensure we have no empty blocks of code.
+}
