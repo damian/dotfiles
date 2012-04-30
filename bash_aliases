@@ -10,7 +10,6 @@ fi
 # Colours in dark terminal
 export CLICOLOR=1
 export LSCOLORS=dxfxcxdxbxegedabagacad
-export GREP_OPTIONS='--color=always'
 
 # Jump to common directories
 alias dev="cd ~/development"
