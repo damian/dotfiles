@@ -14,7 +14,7 @@
   changed = green
   untracked = cyan
 [core]
-  excludesfile = /home/damian/.gitignore
+  excludesfile = "~/.gitignore"
   editor = vim
 [alias]
   s = status -s

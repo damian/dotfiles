@@ -36,6 +36,9 @@ alias bashconfig="vim ~/.bash_aliases"
 # Git
 alias g="git"
 
+# Autocomplete for 'g' as well
+complete -o default -o nospace -F _git g
+
 # Bundler
 alias b="bundle"
 alias be="bundle exec"
@@ -47,11 +50,11 @@ alias tlf='tail -f'
 # Bash colours
 CYAN="\[\033[0;36m\]"
 PURPLE="\[\033[0;35m\]"
+WHITE="\[\033[0;37m\]"
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 BLUE="\[\033[0;34m\]"
 GREEN="\[\033[0;32m\]"
-WHITE="\[\033[0;37m\]"
 
 # Custom prompt
 export PS1="$CYAN\w $PURPLE\$(__git_ps1 \"(%s)\")$WHITE § "
