@@ -7,6 +7,9 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
+# Hub - Aliases Hub to Git
+eval "$(hub alias -s)"
+
 # Colours in dark terminal
 export CLICOLOR=1
 export LSCOLORS=dxfxcxdxbxegedabagacad
