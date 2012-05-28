@@ -14,12 +14,16 @@ eval "$(hub alias -s)"
 export CLICOLOR=1
 export LSCOLORS=dxfxcxdxbxegedabagacad
 
+# Ensure any call to editor opens in VIM
+export EDITOR=vim
+
 # Jump to common directories
 alias dev="cd ~/development"
-alias website="cd ~/development/sage_one_website"
-alias sageone="cd ~/development/sage_one"
-alias sop="cd ~/development/sop/platform_team_sop"
-alias usop="cd ~/development/sop/ui_team_sop"
+
+# Source any local aliases
+if [ -f ~/.bash_aliases.local ]; then
+  . ~/.bash_aliases.local
+fi
 
 # navigation
 alias ll="ls -alp"
