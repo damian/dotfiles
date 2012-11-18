@@ -40,5 +40,3 @@
   prompt = false
 [diff]
   tool = Kaleidoscope
-[commit]
-  template = "~/.git-commit-template.txt"

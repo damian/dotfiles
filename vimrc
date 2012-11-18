@@ -3,6 +3,23 @@ set nocompatible
 
 filetype off
 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-scripts/bufexplorer.zip'
+Bundle 'Solarized'
+
+filetype plugin indent on " required!
+
 " Set the leader key
 let mapleader = ","
 
@@ -54,7 +71,7 @@ set mouse=a
 " Color scheme
 set t_Co=256
 set background=dark
-colorscheme badwolf
+colorscheme solarized
 
 " Automatically enable spellcheck for text files
 autocmd FileType textile,txt,rtf setlocal spell
