@@ -1,6 +1,8 @@
 # Rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+export DEFERRED_GARBAGE_COLLECTION=true
 
 # Bash completion
 if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -42,6 +44,7 @@ alias bashconfig="vim ~/.bash_aliases"
 
 # Git
 alias g="git"
+alias gut="git"
 
 # Autocomplete for 'g' as well
 complete -o default -o nospace -F _git g

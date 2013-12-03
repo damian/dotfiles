@@ -1,0 +1,7 @@
+" My Bundles
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'scrooloose/nerdtree'
+Bundle 'vim-scripts/bufexplorer.zip'
+Bundle 'Lokaltog/vim-powerline'

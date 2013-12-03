@@ -1,22 +1,17 @@
-" Ward off unexpected distro defaults
+" Turn off vi compatibility
 set nocompatible
 
 filetype off
 
+" Configure Bundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-
-" My Bundles
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-scripts/bufexplorer.zip'
-Bundle 'Solarized'
+" Source Vundle bundles
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+  source ~/.vimrc.bundles.local
+endif
 
 filetype plugin indent on " required!
 
@@ -70,8 +65,7 @@ set mouse=a
 
 " Color scheme
 set t_Co=256
-set background=dark
-colorscheme solarized
+colorscheme herald
 
 " Automatically enable spellcheck for text files
 autocmd FileType textile,txt,rtf setlocal spell
@@ -121,3 +115,36 @@ map <leader>p :set invpaste paste?<CR>
 
 " Toggle NERDTree with ,n
 map <leader>n :NERDTreeToggle<cr>
+
+highlight ColorColumn ctermbg=4
+set colorcolumn=80
+
+" Ctrl + e to switch back to previous buffer
+nmap <C-e> :e#<CR>
+
+" Ctrl + n to Switch to next buffer
+" nmap <C-n> :bnext<CR>
+" nmap <C-p> :bprev<CR>
+
+nmap ; :CtrlPBuffer<CR>
+
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+
+" Powerline settings
+set encoding=utf-8
+let g:Powerline_symbols = 'fancy'
+
+" Show highlighting groups for current word
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
