@@ -10,7 +10,6 @@ call vundle#rc()
 " Source Vundle bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
-  source ~/.vimrc.bundles.local
 endif
 
 filetype plugin indent on " required!
@@ -31,9 +30,10 @@ set wrap
 syntax on
 
 " NERDTree
-autocmd vimenter * NERDTree
-autocmd vimenter * if !argc() |  NERDTree | endif
 let NERDTreeShowHidden=1
+
+" Toggle NERDTree with ,n
+map <leader>n :NERDTreeToggle<cr>
 
 " Set jj as Esc alternative
 inoremap jj <Esc>
@@ -65,7 +65,7 @@ set mouse=a
 
 " Color scheme
 set t_Co=256
-colorscheme herald
+colorscheme inkpot
 
 " Automatically enable spellcheck for text files
 autocmd FileType textile,txt,rtf setlocal spell
@@ -112,9 +112,6 @@ noremap <leader>W :w !sudo tee %<CR>
 " Paste toggle (,p)
 set pastetoggle=<leader>p
 map <leader>p :set invpaste paste?<CR>
-
-" Toggle NERDTree with ,n
-map <leader>n :NERDTreeToggle<cr>
 
 highlight ColorColumn ctermbg=4
 set colorcolumn=80

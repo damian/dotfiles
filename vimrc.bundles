@@ -5,3 +5,5 @@ Bundle 'tpope/vim-rails'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'Lokaltog/vim-powerline'
+Bundle "pangloss/vim-javascript"
+Bundle 'kchmck/vim-coffee-script'
