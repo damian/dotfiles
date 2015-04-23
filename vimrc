@@ -4,14 +4,15 @@ set nocompatible
 filetype off
 
 " Configure Bundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Source Vundle bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+call vundle#end()
 filetype plugin indent on " required!
 
 " Set the leader key
