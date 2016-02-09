@@ -6,14 +6,18 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 # golang configuration
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/dev/personal/go
+# export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 # Ensure any call to editor opens in VIM
 export EDITOR=vim
 
 # Jump to common directories
 alias dev="cd ~/dev"
+
+# HTTP server
+alias server="python -m SimpleHTTPServer"
 
 # Source any local aliases
 if [ -f ~/.bash_aliases.local ]; then
@@ -30,7 +34,7 @@ alias ....="cd ../../.."
 function take() { mkdir $1; cd $1; }
 
 # Reload aliases
-alias reload="source ~/.bash_aliases"
+alias reload="source ~/.bash_profile"
 
 # Git
 alias g="git"

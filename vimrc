@@ -18,6 +18,12 @@ filetype plugin indent on " required!
 " Set the leader key
 let mapleader = ","
 
+" Remove newlines at end of file
+set noeol
+au BufNewFile * set noeol
+au BufWritePre * :set binary | set noeol
+au BufWritePost * :set nobinary | set eol
+
 " Show the cursor all the time
 set ruler
 
@@ -66,7 +72,7 @@ set mouse=a
 
 " Color scheme
 set t_Co=256
-colorscheme inkpot
+colorscheme jellybeans
 
 " Automatically enable spellcheck for text files
 autocmd FileType textile,txt,rtf setlocal spell
