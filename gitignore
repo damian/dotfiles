@@ -1,5 +1,6 @@
-*.swp
-*.swo
+*.sw*
 *.pid
 .DS_Store
+.vscode
 *.rbenv-version
+node_modules

@@ -8,6 +8,8 @@ Installation
   git clone git://github.com/damian/dotfiles.git
   cd dotfiles
   sh install.sh
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+  brew bundle --file=./Brewfile
 ```
 
 Vim bindings

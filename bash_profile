@@ -1,14 +1,21 @@
-# rbenv configuration
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+# z configuration
+if command -v brew >/dev/null 2>&1; then
+	# Load rupa's z if installed
+	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
 fi
 
-# golang configuration
-export GOPATH=$HOME/dev/personal/go
-# export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+# bash completion
+if command -v brew >/dev/null 2>&1; then
+  [ -f $(brew --prefix)/etc/profile.d/bash_completion.sh ] && source $(brew --prefix)/etc/profile.d/bash_completion.sh
+fi
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell;
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend;
 
 # Ensure any call to editor opens in VIM
 export EDITOR=vim
@@ -28,7 +35,6 @@ fi
 alias ll="ls -alp"
 alias ..="cd .."
 alias ...="cd ../.."
-alias ....="cd ../../.."
 
 # Make a directory and move into it
 function take() { mkdir $1; cd $1; }
@@ -40,15 +46,11 @@ alias reload="source ~/.bash_profile"
 alias g="git"
 alias gut="git"
 
-# Bundler
-alias b="bundle"
-alias be="bundle exec"
-alias run="bundle exec rails s"
-
 # Bash colours
 CYAN="\[\033[0;36m\]"
 PURPLE="\[\033[0;35m\]"
 WHITE="\[\033[0;37m\]"
 
 # Custom prompt
+GIT_PS1_SHOWDIRTYSTATE=true
 export PS1="$CYAN\w $PURPLE\$(__git_ps1 \"(%s)\")$WHITE § "

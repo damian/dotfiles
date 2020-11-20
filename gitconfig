@@ -1,4 +1,6 @@
 [color]
+  # Use colors in Git commands that are capable of colored output when
+  # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
   ui = auto
 [color "branch"]
   current = yellow reverse
@@ -22,6 +24,7 @@
   c = commit
   l = log
   lo = log --oneline
+  undo = reset --soft HEAD~1
 
   # git cob feature_x
   cob = checkout -b
@@ -29,8 +32,36 @@
   # commit with a message
   cm = commit -m
   cma = commit -a -m
+
+  # List aliases.
+  aliases = config --get-regexp alias
 [user]
   name = Damian Nicholson
   email = damian.nicholson21@gmail.com
+[github]
+  user = damian
 [push]
   default = current
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
+[merge]
+  tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+  prompt = false
+[mergetool]
+  prompt = false
+[diff]
+  tool = Kaleidoscope
+
+  # Detect copies as well as renames.
+  renames = copies
+[pull]
+  rebase = true
+[grep]
+  lineNumber = true
+[help]
+  # Automatically correct and execute mistyped commands.
+  autocorrect = true

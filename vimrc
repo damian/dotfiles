@@ -1,19 +1,34 @@
 " Turn off vi compatibility
 set nocompatible
 
-filetype off
+" Turn syntax highlighting on
+syntax on
 
-" Configure Bundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Source Vundle bundles
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call vundle#end()
-filetype plugin indent on " required!
+call plug#begin('~/.vim/plugged')
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/bufexplorer.zip'
+Plug 'pangloss/vim-javascript'
+Plug 'fatih/vim-go'
+Plug 'trusktr/seti.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'nanotech/jellybeans.vim'
+Plug 'tpope/vim-vinegar'
+Plug 'preservim/nerdtree'
+Plug 'lepture/vim-jinja'
+Plug '/usr/local/opt/fzf'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+call plug#end()
+
+set noswapfile
 
 " Set the leader key
 let mapleader = ","
@@ -33,14 +48,13 @@ set ttyfast
 " Line wrap
 set wrap
 
-" Turn syntax highlighting on
-syntax on
-
 " NERDTree
 let NERDTreeShowHidden=1
 
 " Toggle NERDTree with ,n
 map <leader>n :NERDTreeToggle<cr>
+
+map <leader>t :FZF<cr>
 
 " Set jj as Esc alternative
 inoremap jj <Esc>
@@ -57,6 +71,7 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set autoindent
 
 filetype plugin indent on
 
@@ -70,13 +85,16 @@ set numberwidth=5
 " Mouse
 set mouse=a
 
+set nolist
+set encoding=utf-8
+
 " Color scheme
 set t_Co=256
+set bg=dark
 colorscheme jellybeans
 
 " Automatically enable spellcheck for text files
-autocmd FileType textile,txt,rtf setlocal spell
-au BufNewFile,BufRead *.ui set filetype=ruby
+autocmd FileType md,markdown,textile,txt,rtf setlocal spell
 
 " Toggle spell checking on
 nmap <silent> <leader>s :set spell!<CR>
@@ -95,6 +113,8 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set showmatch
+set noshowmode
 
 " Status bar
 set laststatus=2
@@ -133,3 +153,9 @@ nmap <C-e> :e#<CR>
 " Powerline settings
 set encoding=utf-8
 let g:Powerline_symbols = 'fancy'
+
+" Prettier
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
+let g:prettier#autoformat = 1
+let g:prettier#exec_cmd_async = 1
+au BufNewFile,BufRead *.njk set ft=jinja
