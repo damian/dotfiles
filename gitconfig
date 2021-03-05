@@ -62,6 +62,3 @@
   rebase = true
 [grep]
   lineNumber = true
-[help]
-  # Automatically correct and execute mistyped commands.
-  autocorrect = true
