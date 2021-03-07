@@ -1,15 +1,11 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # z configuration
-if command -v brew >/dev/null 2>&1; then
-	# Load rupa's z if installed
-	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
-fi
+. "/usr/local/etc/profile.d/z.sh"
 
 # bash completion
-if command -v brew >/dev/null 2>&1; then
-  [ -f $(brew --prefix)/etc/profile.d/bash_completion.sh ] && source $(brew --prefix)/etc/profile.d/bash_completion.sh
-fi
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
